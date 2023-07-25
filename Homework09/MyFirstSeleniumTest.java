@@ -2,7 +2,6 @@ package Homework09;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import java.util.List;
 
 public class MyFirstSeleniumTest extends MyFirstSeleniumTestSetUpAndTearDown {
 
@@ -24,20 +23,20 @@ public class MyFirstSeleniumTest extends MyFirstSeleniumTestSetUpAndTearDown {
         WebElement submitButton = MyFirstSeleniumTestSetUpAndTearDown.driver.findElementByCssSelector("button.btn-primary");
         submitButton.click();
 
-        List<WebElement> resultBox = driver.findElements(By.cssSelector("div.border"));
+        String nameResult = driver.findElement(By.cssSelector("p#name")).getText();
+        String emailResult = driver.findElement(By.cssSelector("p#email")).getText();
+        String currentAddressResult = driver.findElement(By.cssSelector("p#currentAddress")).getText();
+        String permanentAddressResult = driver.findElement(By.cssSelector("p#permanentAddress")).getText();
 
-        for (WebElement e : resultBox) {
-            Assert.assertTrue(e.getText().contains("Name:Mat Daemon"));
-            Assert.assertTrue(e.getText().contains("Email:matd@abv.bg"));
-            Assert.assertTrue(e.getText().contains("Current Address :Fifth avenue str."));
-            Assert.assertTrue(e.getText().contains("Permananet Address :Los Angels"));
-
-        }
-
-    }
+        Assert.assertEquals("Name:Mat Daemon",nameResult);
+        Assert.assertEquals("Email:matd@abv.bg",emailResult);
+        Assert.assertEquals("Current Address :Fifth avenue str.",currentAddressResult);
+        Assert.assertEquals("Permananet Address :Los Angels",permanentAddressResult);
 
     }
 
+    }
+   
 
 
 
