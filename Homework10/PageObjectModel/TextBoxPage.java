@@ -18,47 +18,48 @@ public class TextBoxPage {
     By currentAddressResult = By.cssSelector("p#currentAddress");
     By permanentAddressResult = By.cssSelector("p#permanentAddress");
 
-    public TextBoxPage(WebDriver driver){
+    public TextBoxPage(WebDriver driver) {
         this.driver = driver;
     }
 
 
-
-
-    public void enterFullName(String name){driver.findElement(fullNameTextBox).sendKeys(name);
+    public void enterFullName(String name) {
+        driver.findElement(fullNameTextBox).sendKeys(name);
     }
 
-    public void enterEmail(String email){
+    public void enterEmail(String email) {
         driver.findElement(userEmailTextBox).sendKeys(email);
     }
 
-    public void enterCurrentAddress(String currentAddress){
+    public void enterCurrentAddress(String currentAddress) {
         driver.findElement(currentAddressTextBox).sendKeys(currentAddress);
     }
 
-    public void enterPermanentAddress(String permanentAddress){
+    public void enterPermanentAddress(String permanentAddress) {
         driver.findElement(permanentAddressTextBox).sendKeys(permanentAddress);
     }
 
 
-    public  void clickOnSubmit(){
+    public void clickOnSubmit() {
         driver.findElement(submitButton).click();
     }
 
-    public String getResultName(){
+    public String getResultName() {
         return driver.findElement(nameResult).getText();
 
     }
-    public String getResultEmail(){
-        return  driver.findElement(emailResult).getText();
+
+    public String getResultEmail() {
+        return driver.findElement(emailResult).getText();
 
     }
-    public String getResultCurrentAddress(){
+
+    public String getResultCurrentAddress() {
         return driver.findElement(currentAddressResult).getText();
 
     }
 
-    public String getResultPermanentAddress(){
+    public String getResultPermanentAddress() {
         return driver.findElement(permanentAddressResult).getText();
 
     }
