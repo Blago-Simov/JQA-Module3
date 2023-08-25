@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-public class ButtonsPage{
+public class ButtonsPage {
     WebDriver driver;
 
     By doubleClickButton = By.id("doubleClickBtn");
@@ -15,32 +15,38 @@ public class ButtonsPage{
     By rightClickMessage = By.cssSelector("div > p#rightClickMessage");
     By dynamicClickMessage = By.cssSelector("div > p#dynamicClickMessage");
 
-    public ButtonsPage(WebDriver driver){
+    public ButtonsPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void doubleClick(){
-        Actions act = new Actions(driver);
+    Actions act;
+
+    public void doubleClick() {
+        act = new Actions(driver);
         act.doubleClick(driver.findElement(doubleClickButton)).perform();
     }
-    public void rightClick(){
-        Actions act = new Actions(driver);
+
+    public void rightClick() {
+        act = new Actions(driver);
         act.contextClick(driver.findElement(rightClickButton)).perform();
     }
-    public void dynamicClick(){
+
+    public void dynamicClick() {
         WebElement dynamicButton = driver.findElement(dynamicClickButton);
         dynamicButton.click();
     }
 
-    public String doubleClickMessage(){
+    public String doubleClickMessage() {
         return driver.findElement(doubleClickMessage).getText();
 
     }
-    public String rightClickMessage(){
+
+    public String rightClickMessage() {
         return driver.findElement(rightClickMessage).getText();
 
     }
-    public String dynamicClickMessage(){
+
+    public String dynamicClickMessage() {
         return driver.findElement(dynamicClickMessage).getText();
     }
 }
