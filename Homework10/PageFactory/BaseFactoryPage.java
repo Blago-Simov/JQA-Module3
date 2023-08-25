@@ -1,6 +1,5 @@
 package Homework10Pagefactory;
 
-
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class BaseFactoryPage {
 
-    WebDriver driver;
+    public static WebDriver driver;
 
     @FindBy(how = How.XPATH,using = "//*[@class='element-group'][1]/div/ul/li[1]")
     WebElement elementsListTextBoxPanel;
@@ -24,7 +23,7 @@ public class BaseFactoryPage {
 
 
     public BaseFactoryPage(WebDriver driver){
-        this.driver = driver;
+        BaseFactoryPage.driver = driver;
         PageFactory.initElements(driver,this);
     }
     public TextBoxFactoryPage loadTextBoxFactoryPage(){
