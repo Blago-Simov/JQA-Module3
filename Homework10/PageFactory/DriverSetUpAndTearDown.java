@@ -13,14 +13,10 @@ public class DriverSetUpAndTearDown {
     @Before
     public void setUp() {
         driver = BrowserFactory.getBrowser("Firefox");
-
-        if (driver != null) {
-            driver.get("https://demoqa.com/elements");
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            driver.manage().window().maximize();
-        }
-
-
+        driver.get("https://demoqa.com/elements");
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+        
     }
 
     @After
