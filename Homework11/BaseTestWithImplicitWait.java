@@ -10,7 +10,7 @@ public class BaseTestWithImplicitWait {
     static FirefoxDriver driver;
 
     @BeforeClass
-    public static void setUp() {
+    public static void setUp()throws InterruptedException {
         System.setProperty("webdriver.gecko.driver", "E:\\installers\\drivers\\geckodriver-v0.27.0-win64\\geckodriver.exe");
 
         driver = new FirefoxDriver();
