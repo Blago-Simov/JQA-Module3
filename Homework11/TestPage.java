@@ -4,6 +4,7 @@ import Helpers.StartAndCloseDriver;
 import org.junit.Assert;
 import org.junit.Test;
 
+//StartAndCloseDriver Class is a helper from Homework10
 public class TestPage extends StartAndCloseDriver {
     MainPage page;
     ButtonsPageWithCustomExpectedConditions buttonsPage;
