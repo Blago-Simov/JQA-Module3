@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ButtonsPageWithCustomExpectedConditions {
@@ -29,41 +30,20 @@ public class ButtonsPageWithCustomExpectedConditions {
     public void doubleClick() {
         act = new Actions(driver);
         wait = new WebDriverWait(driver, 10);
-        wait.until((ExpectedCondition<Boolean>) driver -> {
-            WebElement element = driver.findElement(doubleClickButton);
-            if (element != null) {
-                return element.isEnabled() && element.isDisplayed();
-
-            }
-            return false;
-        });
+        wait.until(ExpectedConditions.elementToBeClickable(doubleClickButton));
         act.doubleClick(driver.findElement(doubleClickButton)).perform();
     }
 
     public void rightClick() {
         act = new Actions(driver);
         wait = new WebDriverWait(driver, 10);
-        wait.until((ExpectedCondition<Boolean>) driver -> {
-            WebElement element = driver.findElement(rightClickButton);
-            if (element != null) {
-                return element.isEnabled() && element.isDisplayed();
-
-            }
-            return false;
-        });
+        wait.until(ExpectedConditions.elementToBeClickable(rightClickButton));
         act.contextClick(driver.findElement(rightClickButton)).perform();
     }
 
     public void dynamicClick() {
         wait = new WebDriverWait(driver, 10);
-        wait.until((ExpectedCondition<Boolean>) driver -> {
-            WebElement element = driver.findElement(dynamicClickButton);
-            if (element != null) {
-                return element.isEnabled() && element.isDisplayed();
-
-            }
-            return false;
-        });
+        wait.until(ExpectedConditions.elementToBeClickable(dynamicClickButton));
         WebElement dynamicButton = driver.findElement(dynamicClickButton);
         dynamicButton.click();
     }
@@ -107,3 +87,4 @@ public class ButtonsPageWithCustomExpectedConditions {
         return driver.findElement(dynamicClickMessage).getText();
     }
 }
+         
