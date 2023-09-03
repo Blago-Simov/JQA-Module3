@@ -1,19 +1,21 @@
 package Homework11;
 
-import Helpers.WaitHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ButtonsPageWithCustomExpectedConditions {
 
 
     public WebDriver driver;
-
     Actions act;
-    //WaitHelper Class from Homework10 Helpers 
-    WaitHelper helper;
+
+    WebDriverWait wait;
+
 
     By doubleClickButton = By.id("doubleClickBtn");
     By rightClickButton = By.id("rightClickBtn");
@@ -29,37 +31,58 @@ public class ButtonsPageWithCustomExpectedConditions {
 
     public void doubleClick() {
         act = new Actions(driver);
-        helper.waitForElement((WebElement) doubleClickButton, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(doubleClickButton));
         act.doubleClick(driver.findElement(doubleClickButton)).perform();
     }
 
     public void rightClick() {
         act = new Actions(driver);
-        helper.waitForElement((WebElement) rightClickButton, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(rightClickButton));
         act.contextClick(driver.findElement(rightClickButton)).perform();
     }
 
     public void dynamicClick() {
-        helper.waitForElement((WebElement) dynamicClickButton, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(dynamicClickButton));
         WebElement dynamicButton = driver.findElement(dynamicClickButton);
         dynamicButton.click();
     }
 
     public String doubleClickMessage() {
-        helper.customWait((WebElement) doubleClickMessage,30);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until((ExpectedCondition<Boolean>) driver -> {
+            WebElement element = driver.findElement(doubleClickMessage);
+            if(element!=null){
+                return element.isEnabled() && element.isDisplayed();
+            }
+            return false;
+        });
         return driver.findElement(doubleClickMessage).getText();
 
     }
 
     public String rightClickMessage() {
-        helper.customWait((WebElement) rightClickMessage,30);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until((ExpectedCondition<Boolean>) driver -> {
+            WebElement element = driver.findElement(rightClickMessage);
+            if(element!=null){
+                return element.isEnabled() && element.isDisplayed();
+            }
+            return false;
+        });
         return driver.findElement(rightClickMessage).getText();
 
     }
 
     public String dynamicClickMessage() {
-        helper.customWait((WebElement) dynamicClickMessage,30);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until((ExpectedCondition<Boolean>) driver -> {
+            WebElement element = driver.findElement(dynamicClickMessage);
+            if(element!=null){
+                return element.isEnabled() && element.isDisplayed();
+            }
+            return false;
+        });
         return driver.findElement(dynamicClickMessage).getText();
     }
 }
-   
+       
