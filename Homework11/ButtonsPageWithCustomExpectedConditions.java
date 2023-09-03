@@ -12,6 +12,7 @@ public class ButtonsPageWithCustomExpectedConditions {
     public WebDriver driver;
 
     Actions act;
+    //WaitHelper Class from Homework10 Helpers 
     WaitHelper helper;
 
     By doubleClickButton = By.id("doubleClickBtn");
