@@ -19,16 +19,5 @@ public class WaitHelper {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public Boolean customWait(WebElement el,long TimeOutInSeconds){
-       WebDriverWait wait = new WebDriverWait(driver, TimeOutInSeconds);
-        wait.until((ExpectedCondition<Boolean>) driver -> {
-            WebElement element = driver.findElement((By) el);
-            if (element != null) {
-                return element.isEnabled() && element.isDisplayed();
-
-            }
-            return false;
-        });
-        return null;
-    }
+    
 }
