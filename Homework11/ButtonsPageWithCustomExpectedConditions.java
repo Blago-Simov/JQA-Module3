@@ -17,6 +17,8 @@ public class ButtonsPageWithCustomExpectedConditions {
     WebDriverWait wait;
 
 
+
+
     By doubleClickButton = By.id("doubleClickBtn");
     By rightClickButton = By.id("rightClickBtn");
     By dynamicClickButton = By.xpath("/html[1]//div[3]/button[1]");
@@ -31,17 +33,20 @@ public class ButtonsPageWithCustomExpectedConditions {
 
     public void doubleClick() {
         act = new Actions(driver);
+        wait = new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(doubleClickButton));
         act.doubleClick(driver.findElement(doubleClickButton)).perform();
     }
 
     public void rightClick() {
         act = new Actions(driver);
+        wait = new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(rightClickButton));
         act.contextClick(driver.findElement(rightClickButton)).perform();
     }
 
     public void dynamicClick() {
+        wait = new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(dynamicClickButton));
         WebElement dynamicButton = driver.findElement(dynamicClickButton);
         dynamicButton.click();
@@ -85,4 +90,3 @@ public class ButtonsPageWithCustomExpectedConditions {
         return driver.findElement(dynamicClickMessage).getText();
     }
 }
-       
