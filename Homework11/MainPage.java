@@ -22,10 +22,7 @@ public class MainPage {
         wait.until((ExpectedCondition<Boolean>) driver -> {
             WebElement element = driver.findElement(elementsListButtonsPanel);
             if(element!=null){
-                if(element.isEnabled()&& element.isDisplayed())
-                    return true;
-                else
-                    return false;
+                return element.isEnabled() && element.isDisplayed();
             }
             return false;
         });
