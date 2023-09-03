@@ -11,7 +11,7 @@ public class MainPage {
     public static WebDriver driver;
 
     public WebDriverWait wait;
-
+   //WaitHelper Class from Homework10
     WaitHelper waitHelper;
     By elementsListButtonsPanel = By.xpath("//*[@class='element-group'][1]/div/ul/li[5]");
 
