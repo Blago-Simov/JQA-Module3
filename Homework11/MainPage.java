@@ -1,32 +1,32 @@
 package Homework11;
 
+import Helpers.WaitHelper;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+
 
 public class MainPage {
-    public static WebDriver driver;
 
-    By elementsListButtonsPanel = By.xpath("//*[@class='element-group'][1]/div/ul/li[5]");
+    public WebDriver driver;
+    WaitHelper helper;
+
+    @FindBy(how = How.XPATH, using = "//*[@class='element-group'][1]/div/ul/li[5]")
+    WebElement elementsListButtonsPanel;
 
     public MainPage(WebDriver driver) {
-        MainPage.driver = driver;
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+        helper = new WaitHelper(driver);
     }
 
 
     public ButtonsPageWithCustomExpectedConditions loadButtonsPage() {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until((ExpectedCondition<Boolean>) driver -> {
-            WebElement element = driver.findElement(elementsListButtonsPanel);
-            if(element!=null){
-                return element.isEnabled() && element.isDisplayed();
-            }
-            return false;
-        });
-        driver.findElement(elementsListButtonsPanel).click();
+        helper.customWaitForElement(elementsListButtonsPanel, 20);
+        (elementsListButtonsPanel).click();
         Assert.assertEquals("https://demoqa.com/buttons", driver.getCurrentUrl());
         return new ButtonsPageWithCustomExpectedConditions(driver);
     }
